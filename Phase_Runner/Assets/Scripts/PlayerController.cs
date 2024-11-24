@@ -20,7 +20,7 @@ namespace Assets.Scripts
 			controller = GetComponent<CharacterController>();
 
 			// 마우스 커서 잠금
-			//Cursor.lockState = CursorLockMode.Locked;
+			Cursor.lockState = CursorLockMode.Locked;
 		}
 
 		void Update()
