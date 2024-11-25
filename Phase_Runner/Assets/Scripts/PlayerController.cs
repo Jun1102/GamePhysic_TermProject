@@ -5,7 +5,8 @@ namespace Assets.Scripts
 {
 	public class PlayerController : MonoBehaviour
 	{
-		public float moveSpeed = 5f;        // 이동 속도
+		public float moveSpeed = 7f;        // 이동 속도
+		public float runSpeed = 12f;         // 달리기 속도
 		public float jumpHeight = 1f;       // 점프 높이
 		public float gravity = -9.81f;      // 중력 가속도
 		public float mouseSensitivity = 100f; // 마우스 민감도
@@ -39,7 +40,15 @@ namespace Assets.Scripts
 			Vector3 moveDirection = transform.right * horizontal + transform.forward * vertical;
 
 			// 이동 처리
-			controller.Move(moveDirection * moveSpeed * Time.deltaTime);
+			if (Input.GetKey(KeyCode.LeftShift))
+			{
+				controller.Move(moveDirection * runSpeed * Time.deltaTime);
+				Debug.Log("Run");
+			}
+			else
+			{
+				controller.Move(moveDirection * moveSpeed * Time.deltaTime);
+			}
 		}
 
 		void HandleJump()

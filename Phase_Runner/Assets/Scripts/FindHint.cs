@@ -6,6 +6,7 @@ namespace Assets.Scripts
 {
 	public class FindHint : MonoBehaviour
 	{
+		public GameObject compass;
 		public GameObject directionSenter;
 		public GameObject hintDirection;
 		private GameObject closestHint;
@@ -25,13 +26,20 @@ namespace Assets.Scripts
 
 			if (Input.GetKeyDown(KeyCode.Q) && !isCoroutineRunning)
 			{
-				if (currentCooldown <= 0)
+				if (compass.activeInHierarchy)
+				{
+if (currentCooldown <= 0)
 				{
 					StartCoroutine(ActivateDirection());
 				}
 				else
 				{
 					Debug.Log("Cooldown: " + currentCooldown.ToString("F2"));
+				}
+				}
+				else
+				{
+					Debug.Log("have to pick up the compass");
 				}
 			}
 
