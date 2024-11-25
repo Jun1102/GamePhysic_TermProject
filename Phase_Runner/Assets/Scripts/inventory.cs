@@ -42,7 +42,15 @@ public class inventory : MonoBehaviour
         }
     }
 
-    public Sprite GetHintContent()
+	public string GetHintName()
+	{
+		ItemSlot current_slot = GetSelectedSlot();
+		if (current_slot.hint != null)
+			return current_slot.hint.hint_name;
+		return null;
+	}
+
+	public Sprite GetHintContent()
     {
         ItemSlot current_slot = GetSelectedSlot();
         if(current_slot.hint != null)

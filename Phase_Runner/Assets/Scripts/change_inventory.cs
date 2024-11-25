@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class change_inventory : MonoBehaviour
     public static int cur_slot = 0;
     private float plus = 100.0f;
     private float minus = -100.0f;
+    public ChangeHold hand;
 
     public void Start()
     {
@@ -47,7 +49,7 @@ public class change_inventory : MonoBehaviour
                     cur_slot = 3;
                 else if (this.transform.position == slot_pos[4])
                     cur_slot = 4;
-            }
+			}
             
         }
         else if (mouse_wheel < 0)    
@@ -94,7 +96,9 @@ public class change_inventory : MonoBehaviour
             cur_slot = 4;
             this.transform.position = MoveSlot(cur_slot);
         }
-    }
+
+		hand.LoadHoldObject();
+	}
 
     public static Vector3 MoveSlot(int i)
     {

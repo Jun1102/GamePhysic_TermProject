@@ -28,14 +28,14 @@ namespace Assets.Scripts
 			{
 				if (compass.activeInHierarchy)
 				{
-if (currentCooldown <= 0)
-				{
-					StartCoroutine(ActivateDirection());
-				}
-				else
-				{
-					Debug.Log("Cooldown: " + currentCooldown.ToString("F2"));
-				}
+					if (currentCooldown <= 0)
+					{
+						StartCoroutine(ActivateDirection());
+					}
+					else
+					{
+						Debug.Log("Cooldown: " + currentCooldown.ToString("F2"));
+					}
 				}
 				else
 				{
