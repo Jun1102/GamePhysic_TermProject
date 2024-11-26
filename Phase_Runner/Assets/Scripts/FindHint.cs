@@ -69,7 +69,7 @@ namespace Assets.Scripts
 
 			foreach (GameObject hintPoint in hintPoints)
 			{
-				if (hintPoint == null) continue; // 타겟이 존재하지 않으면 스킵
+				if (hintPoint == null || !hintPoint.activeInHierarchy) continue; // 타겟이 존재하지 않으면 스킵
 
 				float distance = (hintPoint.transform.position - directionSenter.transform.position).sqrMagnitude; // 거리 계산 (squared magnitude 사용)
 

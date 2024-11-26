@@ -6385,6 +6385,9 @@ MonoBehaviour:
   hintDirection: {fileID: 2929841949926968286}
   hintPoints:
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   activeDuration: 3
   cooldownTime: 5
   currentCooldown: 0
