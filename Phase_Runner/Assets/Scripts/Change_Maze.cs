@@ -7,14 +7,27 @@ namespace Assets.Scripts
 {
 	public class Change_Maze : MonoBehaviour
 	{
+		private static Change_Maze instance;
+		public static Change_Maze Instance { get { return instance; } }
 		public List<GameObject> Mazes;
-
 		public GameObject Maze = null;
 		public float ChangeTime = 10f;
 		public int MaxChangeCnt = 5;
 		public GameObject Player;
 		public GameObject Spawn;
 		public CharacterController Controller;
+
+		private void Awake()
+		{
+			if (instance == null)
+			{
+				instance = this;
+			}
+			else
+			{
+				Destroy(this);
+			}
+		}
 		// Use this for initialization
 		void Start()
 		{
@@ -41,6 +54,11 @@ namespace Assets.Scripts
 				}
 
 			}
+		}
+
+		public float GetMazeCol()
+		{
+			return ChangeTime;
 		}
 
 		public void ChangeMaze()
