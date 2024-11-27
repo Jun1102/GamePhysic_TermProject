@@ -132,6 +132,9 @@ MonoBehaviour:
   Maze: {fileID: 0}
   ChangeTime: 20
   MaxChangeCnt: 5
+  Player: {fileID: 0}
+  Spawn: {fileID: 0}
+  Controller: {fileID: 0}
 --- !u!114 &3545775292863835793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,7 +249,7 @@ MonoBehaviour:
   - {fileID: 6328571628132586397, guid: 69699e6d3b2a12a46b63b44edd29ce1b, type: 3}
   - {fileID: 1270812141995729488, guid: 8d947b1f1be9d0e4b8d4295f92031a35, type: 3}
   Boundary: 48
-  Box_cnt: 15
+  Box_cnt: 30
   Box_idx: 0
   position: {x: 0, y: 0, z: 0}
   checkRadius: 0.5
@@ -272,7 +275,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5995747545914424934, guid: 88ab5694f10c14d4c90794efafce4a0d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7113248748297397993, guid: 88ab5694f10c14d4c90794efafce4a0d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -318,7 +321,8 @@ PrefabInstance:
     - {fileID: 5276773625380163022, guid: 88ab5694f10c14d4c90794efafce4a0d, type: 3}
     - {fileID: 1720280866823371011, guid: 88ab5694f10c14d4c90794efafce4a0d, type: 3}
     - {fileID: 7178813517809050715, guid: 88ab5694f10c14d4c90794efafce4a0d, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8724450143335510501, guid: 88ab5694f10c14d4c90794efafce4a0d, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5995747545914424934, guid: 88ab5694f10c14d4c90794efafce4a0d, type: 3}
@@ -356,7 +360,7 @@ MonoBehaviour:
   - {fileID: 6328571628132586397, guid: 69699e6d3b2a12a46b63b44edd29ce1b, type: 3}
   - {fileID: 1270812141995729488, guid: 8d947b1f1be9d0e4b8d4295f92031a35, type: 3}
   Boundary: 48
-  Box_cnt: 15
+  Box_cnt: 30
   Box_idx: 0
   position: {x: 0, y: 0, z: 0}
   checkRadius: 0.5
@@ -457,7 +461,7 @@ MonoBehaviour:
   - {fileID: 6328571628132586397, guid: 69699e6d3b2a12a46b63b44edd29ce1b, type: 3}
   - {fileID: 1270812141995729488, guid: 8d947b1f1be9d0e4b8d4295f92031a35, type: 3}
   Boundary: 48
-  Box_cnt: 15
+  Box_cnt: 30
   Box_idx: 0
   position: {x: 0, y: 0, z: 0}
   checkRadius: 0.5
@@ -567,7 +571,7 @@ MonoBehaviour:
   - {fileID: 6328571628132586397, guid: 69699e6d3b2a12a46b63b44edd29ce1b, type: 3}
   - {fileID: 1270812141995729488, guid: 8d947b1f1be9d0e4b8d4295f92031a35, type: 3}
   Boundary: 48
-  Box_cnt: 15
+  Box_cnt: 30
   Box_idx: 0
   position: {x: 0, y: 0, z: 0}
   checkRadius: 0.5
