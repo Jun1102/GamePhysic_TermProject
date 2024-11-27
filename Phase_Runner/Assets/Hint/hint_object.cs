@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,8 @@ public class hint_object : MonoBehaviour
     public void OnInteract()
     {
         inventory.instance.AddItem(hint);
-        Destroy(transform.parent.gameObject);
+		Change_Hint.Instance.FindedHint();
+		Destroy(transform.parent.gameObject);
     }
 }
 

@@ -5,15 +5,27 @@ namespace Assets.Scripts
 {
 	public class PlayerController : MonoBehaviour
 	{
-		public float moveSpeed = 5f;        // 이동 속도
+		public float moveSpeed = 7f;        // 이동 속도
+		public float runSpeed = 12f;         // 달리기 속도
 		public float jumpHeight = 1f;       // 점프 높이
 		public float gravity = -9.81f;      // 중력 가속도
-		public float mouseSensitivity = 100f; // 마우스 민감도
+		public float mouseSensitivity = 200f; // 마우스 민감도
 		public Transform cameraTransform;   // 플레이어 카메라 Transform
 
 		private CharacterController controller;
 		private float verticalVelocity;     // Y축 속도 (중력 및 점프)
 		private float xHeadRotation = 0f;    // 카메라 X축 회전 값
+
+		public AudioSource WalkAudio = null;
+		public AudioClip WalkSound;
+		public float WalkPitch = 1f;
+		public float RunPitch = 1.3f;
+
+		public AudioSource JumpAudio = null;
+		public AudioClip JumpSound;
+		public float startJumpTime = 0.1f;
+		public float JumpPitch = 1.1f;
+		public bool isJump;
 
 		void Start()
 		{
@@ -38,12 +50,47 @@ namespace Assets.Scripts
 			// 입력 방향 계산 (로컬 좌표 기준)
 			Vector3 moveDirection = transform.right * horizontal + transform.forward * vertical;
 
+			if (WalkAudio.isPlaying)
+			{
+				if (isJump || moveDirection == Vector3.zero)
+				{
+					WalkAudio.Stop();
+				}
+			}
+			else
+			{
+				WalkAudio.clip = WalkSound;
+				WalkAudio.Play();
+			}
+
 			// 이동 처리
-			controller.Move(moveDirection * moveSpeed * Time.deltaTime);
+			if (Input.GetKey(KeyCode.LeftShift))
+			{
+				controller.Move(moveDirection * runSpeed * Time.deltaTime);
+				if (!isJump) { WalkAudio.pitch = RunPitch; }
+				Debug.Log("Run");
+			}
+			else
+			{
+				controller.Move(moveDirection * moveSpeed * Time.deltaTime);
+				if (!isJump) { WalkAudio.pitch = WalkPitch; }
+			}
 		}
 
 		void HandleJump()
 		{
+			if (isJump)
+			{
+				if (verticalVelocity < 0 && Physics.Raycast(transform.position, Vector3.down, 0.8f))
+				{
+					isJump = false;
+					JumpAudio.clip = JumpSound;
+					JumpAudio.time = startJumpTime;
+					JumpAudio.pitch = JumpPitch;
+					JumpAudio.Play();
+				}
+			}
+
 			if (IsGrounded())
 			{
 				// 땅에 닿아 있을 때
@@ -51,6 +98,7 @@ namespace Assets.Scripts
 				{
 					Debug.Log("Jump");
 					verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity); // 점프 속도 설정
+					isJump = true;
 				}
 			}
 			else

@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -24,7 +25,7 @@ public class check_Interaction : MonoBehaviour
         
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, maxDistance, layer_mask))
+		if (Physics.Raycast(ray, out hit, maxDistance, layer_mask))
         {
             UnityEngine.Debug.DrawRay(ray.origin, ray.direction * maxDistance, Color.red);
             interaction_object = hit.collider.gameObject;

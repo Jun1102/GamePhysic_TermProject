@@ -6,6 +6,7 @@ namespace Assets.Scripts
 {
 	public class FindHint : MonoBehaviour
 	{
+		public GameObject compass;
 		public GameObject directionSenter;
 		public GameObject hintDirection;
 		private GameObject closestHint;
@@ -25,13 +26,20 @@ namespace Assets.Scripts
 
 			if (Input.GetKeyDown(KeyCode.Q) && !isCoroutineRunning)
 			{
-				if (currentCooldown <= 0)
+				if (compass.activeInHierarchy)
 				{
-					StartCoroutine(ActivateDirection());
+					if (currentCooldown <= 0)
+					{
+						StartCoroutine(ActivateDirection());
+					}
+					else
+					{
+						Debug.Log("Cooldown: " + currentCooldown.ToString("F2"));
+					}
 				}
 				else
 				{
-					Debug.Log("Cooldown: " + currentCooldown.ToString("F2"));
+					Debug.Log("have to pick up the compass");
 				}
 			}
 
@@ -61,7 +69,7 @@ namespace Assets.Scripts
 
 			foreach (GameObject hintPoint in hintPoints)
 			{
-				if (hintPoint == null) continue; // 타겟이 존재하지 않으면 스킵
+				if (hintPoint == null || !hintPoint.activeInHierarchy) continue; // 타겟이 존재하지 않으면 스킵
 
 				float distance = (hintPoint.transform.position - directionSenter.transform.position).sqrMagnitude; // 거리 계산 (squared magnitude 사용)
 
