@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,12 @@ public class CooltimeUI : MonoBehaviour
     public Image incooltime;
     private bool isCoroutineRunning = false;
 
-    private void Update()
+	private void Start()
+	{
+        max_cooltime = FindHint.Instance.GetCompassCol();
+	}
+
+	private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q) && !isCoroutineRunning)
         {
@@ -23,8 +29,9 @@ public class CooltimeUI : MonoBehaviour
     public IEnumerator CoolTime()
     {
         isCoroutineRunning = true;
-        cooltime = 30.0f;
-        while(cooltime > 0.0f)
+        FindHint.Instance.SetCoolTime(isCoroutineRunning);
+		cooltime = FindHint.Instance.GetCompassCol();
+		while (cooltime > 0.0f)
         {
             cooltime -= Time.deltaTime;
 
@@ -33,5 +40,6 @@ public class CooltimeUI : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
         isCoroutineRunning=false;
-    }
+		FindHint.Instance.SetCoolTime(isCoroutineRunning);
+	}
 }

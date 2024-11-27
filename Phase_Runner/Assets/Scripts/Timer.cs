@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using Assets.Scripts;
 
 public class Timer : MonoBehaviour
 {
@@ -13,7 +14,12 @@ public class Timer : MonoBehaviour
     private float timeRemaining = 180f; 
     private bool timerRunning = true;
 
-    void Update()
+	private void Start()
+	{
+        timeRemaining = Change_Maze.Instance.GetMazeCol();
+	}
+
+	void Update()
     {
         if (timerRunning)
         {
@@ -25,9 +31,10 @@ public class Timer : MonoBehaviour
             else
             {
                 timeRemaining = 0;
-                timerRunning = false;
+                //timerRunning = false;
                 TimerEnded();
-            }
+                timeRemaining = Change_Maze.Instance.GetMazeCol();
+			}
         }
     }
 

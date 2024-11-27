@@ -6,6 +6,8 @@ namespace Assets.Scripts
 {
 	public class FindHint : MonoBehaviour
 	{
+		private static FindHint instance;
+		public static FindHint Instance { get { return instance; } }
 		public GameObject compass;
 		public GameObject directionSenter;
 		public GameObject hintDirection;
@@ -16,33 +18,21 @@ namespace Assets.Scripts
 		public float currentCooldown = 0;
 		private bool isCoroutineRunning = false;
 
+		private void Awake()
+		{
+			if (instance == null)
+			{
+				instance = this;
+			}
+			else
+			{
+				Destroy(this);
+			}
+		}
+
 		// Update is called once per frame
 		void Update()
 		{
-			if (currentCooldown > 0)
-			{
-				currentCooldown -= Time.deltaTime;
-			}
-
-			if (Input.GetKeyDown(KeyCode.Q) && !isCoroutineRunning)
-			{
-				if (compass.activeInHierarchy)
-				{
-					if (currentCooldown <= 0)
-					{
-						StartCoroutine(ActivateDirection());
-					}
-					else
-					{
-						Debug.Log("Cooldown: " + currentCooldown.ToString("F2"));
-					}
-				}
-				else
-				{
-					Debug.Log("have to pick up the compass");
-				}
-			}
-
 			closestHint = FindClosestHint();
 			if (closestHint != null)
 			{
@@ -50,16 +40,15 @@ namespace Assets.Scripts
 			}
 		}
 
-		IEnumerator ActivateDirection()
+		public float GetCompassCol()
 		{
-			isCoroutineRunning = true;
-			hintDirection.SetActive(true);
+			return cooldownTime;
+		}
 
-			yield return new WaitForSeconds(activeDuration);
-
-			hintDirection.SetActive(false);
-			isCoroutineRunning = false;
-			currentCooldown = cooldownTime;
+		public void SetCoolTime(bool isRunning)
+		{
+			isCoroutineRunning = isRunning;
+			hintDirection.SetActive(isCoroutineRunning);
 		}
 
 		public GameObject FindClosestHint()
