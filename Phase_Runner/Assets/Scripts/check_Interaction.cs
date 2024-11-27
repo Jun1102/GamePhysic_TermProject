@@ -10,7 +10,7 @@ public class check_Interaction : MonoBehaviour
     private Ray ray;
     private RaycastHit hit;
     private GameObject interaction_object = null;
-    public float maxDistance = 2.0f;
+    public float maxDistance = 4.0f;
     private int layer_mask;
     public static bool interact_obj;
     void Start()
