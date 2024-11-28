@@ -26,6 +26,7 @@ namespace Assets.Scripts
 		public float startJumpTime = 0.1f;
 		public float JumpPitch = 1.1f;
 		public bool isJump;
+		static public bool isCursorlocked;
 
 		void Start()
 		{
@@ -33,13 +34,15 @@ namespace Assets.Scripts
 
 			// 마우스 커서 잠금
 			Cursor.lockState = CursorLockMode.Locked;
+			isCursorlocked = true;
 		}
 
 		void Update()
 		{
 			MovePlayer();    // 플레이어 이동 처리
-			HandleJump();    // 점프 및 중력 처리
-			RotateCamera();  // 카메라 회전 처리
+			HandleJump(); // 점프 및 중력 처리
+			if(input_pw.isPWobjON == false)
+				RotateCamera();  // 카메라 회전 처리
 		}
 
 		void MovePlayer()

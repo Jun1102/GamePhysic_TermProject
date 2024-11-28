@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class enable_hint : MonoBehaviour
 {
-    private bool object_enable = false;
+    static public bool object_enable = false;
     public hint_object hint;
     public Image content;
 
