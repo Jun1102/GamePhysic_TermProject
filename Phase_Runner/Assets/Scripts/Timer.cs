@@ -50,7 +50,6 @@ namespace Assets.Scripts
                 {
                     timeRemaining = 0;
                     //timerRunning = false;
-                    TimerEnded();
                     timeRemaining = Change_Maze.Instance.GetMazeCol();
                 }
             }
@@ -72,6 +71,7 @@ namespace Assets.Scripts
 
         public void SetTime()
         {
+			TimerEnded();
 			timeRemaining = Change_Maze.Instance.GetMazeCol();
 		}
     }
