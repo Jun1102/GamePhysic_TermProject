@@ -5,50 +5,74 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using Assets.Scripts;
+using System.Data;
 
-public class Timer : MonoBehaviour
+namespace Assets.Scripts
 {
-    public TMP_Text timerText;
-    public TMP_Text Date;
-    private int cur_day = 0;
-    private float timeRemaining = 180f; 
-    private bool timerRunning = true;
 
-	private void Start()
-	{
-        timeRemaining = Change_Maze.Instance.GetMazeCol();
-	}
-
-	void Update()
+    public class Timer : MonoBehaviour
     {
-        if (timerRunning)
+        private static Timer instance;
+        public static Timer Instance { get { return instance; } }
+        public TMP_Text timerText;
+        public TMP_Text Date;
+        private int cur_day = 0;
+        private float timeRemaining = 180f;
+        private bool timerRunning = true;
+
+        private void Awake()
         {
-            if (timeRemaining > 0)
+            if (instance == null)
             {
-                timeRemaining -= Time.deltaTime;
-                UpdateTimerDisplay(timeRemaining);
+                instance = this;
             }
             else
             {
-                timeRemaining = 0;
-                //timerRunning = false;
-                TimerEnded();
-                timeRemaining = Change_Maze.Instance.GetMazeCol();
-			}
+                Destroy(this);
+            }
         }
-    }
 
-    void UpdateTimerDisplay(float timeToDisplay)
-    {
-       
-        int minutes = Mathf.FloorToInt(timeToDisplay / 60);
-        int seconds = Mathf.FloorToInt(timeToDisplay % 60);
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-    }
+        private void Start()
+        {
+            timeRemaining = Change_Maze.Instance.GetMazeCol();
+        }
 
-    void TimerEnded()
-    {
-        cur_day++;
-        Date.text = "Day " + cur_day;
+        void Update()
+        {
+            if (timerRunning)
+            {
+                if (timeRemaining > 0)
+                {
+                    timeRemaining -= Time.deltaTime;
+                    UpdateTimerDisplay(timeRemaining);
+                }
+                else
+                {
+                    timeRemaining = 0;
+                    //timerRunning = false;
+                    TimerEnded();
+                    timeRemaining = Change_Maze.Instance.GetMazeCol();
+                }
+            }
+        }
+
+        void UpdateTimerDisplay(float timeToDisplay)
+        {
+
+            int minutes = Mathf.FloorToInt(timeToDisplay / 60);
+            int seconds = Mathf.FloorToInt(timeToDisplay % 60);
+            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        }
+
+        void TimerEnded()
+        {
+            cur_day++;
+            Date.text = "Day " + cur_day;
+        }
+
+        public void SetTime()
+        {
+			timeRemaining = Change_Maze.Instance.GetMazeCol();
+		}
     }
 }

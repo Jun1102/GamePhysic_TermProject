@@ -130,8 +130,9 @@ MonoBehaviour:
   - {fileID: 8892448665678364591}
   - {fileID: 6969576471626388675}
   Maze: {fileID: 0}
-  ChangeTime: 20
+  ChangeTime: 40
   MaxChangeCnt: 5
+  change_cnt: -1
   Player: {fileID: 0}
   Spawn: {fileID: 0}
   Controller: {fileID: 0}
@@ -248,8 +249,14 @@ MonoBehaviour:
   - {fileID: 1438221748538014259, guid: 682946dac16052f48921c77d81241229, type: 3}
   - {fileID: 6328571628132586397, guid: 69699e6d3b2a12a46b63b44edd29ce1b, type: 3}
   - {fileID: 1270812141995729488, guid: 8d947b1f1be9d0e4b8d4295f92031a35, type: 3}
+  - {fileID: 1000012968262300, guid: 30b99e7dc1382e346a7f9789de00de5e, type: 3}
+  - {fileID: 1000010869019282, guid: d7ba4fe833670a140b9b6085652f0e26, type: 3}
+  - {fileID: 1000011949594382, guid: 75fa8bf3a73ee6b4da0c7a2c6d3db6a1, type: 3}
+  - {fileID: 1000011696945378, guid: f94554303b4f7094ea5e12fe79985529, type: 3}
+  - {fileID: 1000013569322780, guid: 5d10ae558efe6a64d96e5b4d02ec6792, type: 3}
+  - {fileID: 1000011143488790, guid: a649302f8407dd9469e2c5b67b4a0674, type: 3}
   Boundary: 48
-  Box_cnt: 30
+  Box_cnt: 100
   Box_idx: 0
   position: {x: 0, y: 0, z: 0}
   checkRadius: 0.5
@@ -359,8 +366,14 @@ MonoBehaviour:
   - {fileID: 1438221748538014259, guid: 682946dac16052f48921c77d81241229, type: 3}
   - {fileID: 6328571628132586397, guid: 69699e6d3b2a12a46b63b44edd29ce1b, type: 3}
   - {fileID: 1270812141995729488, guid: 8d947b1f1be9d0e4b8d4295f92031a35, type: 3}
+  - {fileID: 1000012968262300, guid: 30b99e7dc1382e346a7f9789de00de5e, type: 3}
+  - {fileID: 1000010869019282, guid: d7ba4fe833670a140b9b6085652f0e26, type: 3}
+  - {fileID: 1000011949594382, guid: 75fa8bf3a73ee6b4da0c7a2c6d3db6a1, type: 3}
+  - {fileID: 1000011696945378, guid: f94554303b4f7094ea5e12fe79985529, type: 3}
+  - {fileID: 1000013569322780, guid: 5d10ae558efe6a64d96e5b4d02ec6792, type: 3}
+  - {fileID: 1000011143488790, guid: a649302f8407dd9469e2c5b67b4a0674, type: 3}
   Boundary: 48
-  Box_cnt: 30
+  Box_cnt: 100
   Box_idx: 0
   position: {x: 0, y: 0, z: 0}
   checkRadius: 0.5
@@ -460,8 +473,14 @@ MonoBehaviour:
   - {fileID: 1438221748538014259, guid: 682946dac16052f48921c77d81241229, type: 3}
   - {fileID: 6328571628132586397, guid: 69699e6d3b2a12a46b63b44edd29ce1b, type: 3}
   - {fileID: 1270812141995729488, guid: 8d947b1f1be9d0e4b8d4295f92031a35, type: 3}
+  - {fileID: 1000012968262300, guid: 30b99e7dc1382e346a7f9789de00de5e, type: 3}
+  - {fileID: 1000010869019282, guid: d7ba4fe833670a140b9b6085652f0e26, type: 3}
+  - {fileID: 1000011949594382, guid: 75fa8bf3a73ee6b4da0c7a2c6d3db6a1, type: 3}
+  - {fileID: 1000011696945378, guid: f94554303b4f7094ea5e12fe79985529, type: 3}
+  - {fileID: 1000013569322780, guid: 5d10ae558efe6a64d96e5b4d02ec6792, type: 3}
+  - {fileID: 1000011143488790, guid: a649302f8407dd9469e2c5b67b4a0674, type: 3}
   Boundary: 48
-  Box_cnt: 30
+  Box_cnt: 100
   Box_idx: 0
   position: {x: 0, y: 0, z: 0}
   checkRadius: 0.5
@@ -570,8 +589,14 @@ MonoBehaviour:
   - {fileID: 1438221748538014259, guid: 682946dac16052f48921c77d81241229, type: 3}
   - {fileID: 6328571628132586397, guid: 69699e6d3b2a12a46b63b44edd29ce1b, type: 3}
   - {fileID: 1270812141995729488, guid: 8d947b1f1be9d0e4b8d4295f92031a35, type: 3}
+  - {fileID: 1000012968262300, guid: 30b99e7dc1382e346a7f9789de00de5e, type: 3}
+  - {fileID: 1000010869019282, guid: d7ba4fe833670a140b9b6085652f0e26, type: 3}
+  - {fileID: 1000011949594382, guid: 75fa8bf3a73ee6b4da0c7a2c6d3db6a1, type: 3}
+  - {fileID: 1000011696945378, guid: f94554303b4f7094ea5e12fe79985529, type: 3}
+  - {fileID: 1000013569322780, guid: 5d10ae558efe6a64d96e5b4d02ec6792, type: 3}
+  - {fileID: 1000011143488790, guid: a649302f8407dd9469e2c5b67b4a0674, type: 3}
   Boundary: 48
-  Box_cnt: 30
+  Box_cnt: 100
   Box_idx: 0
   position: {x: 0, y: 0, z: 0}
   checkRadius: 0.5

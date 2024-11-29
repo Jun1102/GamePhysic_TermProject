@@ -13,9 +13,11 @@ namespace Assets.Scripts
 		public GameObject Maze = null;
 		public float ChangeTime = 10f;
 		public int MaxChangeCnt = 5;
+		public int change_cnt = -1;
 		public GameObject Player;
 		public GameObject Spawn;
 		public CharacterController Controller;
+		public Coroutine Change;
 
 		private void Awake()
 		{
@@ -35,24 +37,16 @@ namespace Assets.Scripts
 			{
 				Controller = Player.GetComponent<CharacterController>();
 			}
-			StartCoroutine(CheckTimeChangeMaze());
+			Change = StartCoroutine(CheckTimeChangeMaze());
 		}
 
 		public IEnumerator CheckTimeChangeMaze()
 		{
-			int change_cnt = -1;
 			while (change_cnt < MaxChangeCnt)
 			{
 				change_cnt++;
 				ChangeMaze();
 				yield return new WaitForSeconds(ChangeTime);
-				if (Player != null)
-				{
-					Controller.enabled = false; // 비활성화
-					Player.transform.position = Spawn.transform.position;
-					Controller.enabled = true;  // 다시 활성화
-				}
-
 			}
 		}
 
@@ -72,6 +66,15 @@ namespace Assets.Scripts
 			Maze = Mazes[idx];
 			Maze.SetActive(true);
 			Change_Hint.Instance.ChangeHint(Maze.transform.GetChild(1).gameObject);
+			if (Player != null)
+			{
+				Controller.enabled = false; // 비활성화
+				Player.transform.position = Spawn.transform.position;
+				Controller.enabled = true;  // 다시 활성화
+			}
+			Timer.Instance.SetTime();
+			StopCoroutine(Change);
+			Change = StartCoroutine(CheckTimeChangeMaze());
 		}
 	}
 }
