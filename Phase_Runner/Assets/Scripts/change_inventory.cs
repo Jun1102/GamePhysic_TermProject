@@ -32,70 +32,75 @@ public class change_inventory : MonoBehaviour
     public void Update()
     {
         float mouse_wheel = Input.GetAxis("Mouse ScrollWheel");
-        if (mouse_wheel > 0)
+        if(input_pw.isPWobjON == false)
         {
-            if (transform.position.x <= min_pos)
-                return;
-            else
+            if (mouse_wheel > 0)
             {
-                this.transform.Translate(minus, 0, 0);
-                if (this.transform.position == slot_pos[0])
-                    cur_slot = 0;
-                else if (this.transform.position == slot_pos[1])
-                    cur_slot = 1;
-                else if (this.transform.position == slot_pos[2])
-                    cur_slot = 2;
-                else if (this.transform.position == slot_pos[3])
-                    cur_slot = 3;
-                else if (this.transform.position == slot_pos[4])
-                    cur_slot = 4;
-			}
-            
-        }
-        else if (mouse_wheel < 0)    
-        {
-            if (transform.position.x >= max_pos)
-                return;
-            else
-            {
-                this.transform.Translate(plus, 0, 0);
-                if (this.transform.position == slot_pos[0])
-                    cur_slot = 0;
-                else if (this.transform.position == slot_pos[1])
-                    cur_slot = 1;
-                else if (this.transform.position == slot_pos[2])
-                    cur_slot = 2;
-                else if (this.transform.position == slot_pos[3])
-                    cur_slot = 3;
-                else if (this.transform.position == slot_pos[4])
-                    cur_slot = 4;
+                if (transform.position.x <= min_pos)
+                    return;
+                else
+                {
+                    this.transform.Translate(minus, 0, 0);
+                    if (this.transform.position == slot_pos[0])
+                        cur_slot = 0;
+                    else if (this.transform.position == slot_pos[1])
+                        cur_slot = 1;
+                    else if (this.transform.position == slot_pos[2])
+                        cur_slot = 2;
+                    else if (this.transform.position == slot_pos[3])
+                        cur_slot = 3;
+                    else if (this.transform.position == slot_pos[4])
+                        cur_slot = 4;
+                }
+
             }
+            else if (mouse_wheel < 0)
+            {
+                if (transform.position.x >= max_pos)
+                    return;
+                else
+                {
+                    this.transform.Translate(plus, 0, 0);
+                    if (this.transform.position == slot_pos[0])
+                        cur_slot = 0;
+                    else if (this.transform.position == slot_pos[1])
+                        cur_slot = 1;
+                    else if (this.transform.position == slot_pos[2])
+                        cur_slot = 2;
+                    else if (this.transform.position == slot_pos[3])
+                        cur_slot = 3;
+                    else if (this.transform.position == slot_pos[4])
+                        cur_slot = 4;
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                cur_slot = 0;
+                this.transform.position = MoveSlot(cur_slot);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                cur_slot = 1;
+                this.transform.position = MoveSlot(cur_slot);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                cur_slot = 2;
+                this.transform.position = MoveSlot(cur_slot);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                cur_slot = 3;
+                this.transform.position = MoveSlot(cur_slot);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha5))
+            {
+                cur_slot = 4;
+                this.transform.position = MoveSlot(cur_slot);
+            }
+
         }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            cur_slot = 0;
-            this.transform.position = MoveSlot(cur_slot);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            cur_slot = 1;
-            this.transform.position = MoveSlot(cur_slot);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            cur_slot = 2;
-            this.transform.position = MoveSlot(cur_slot);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            cur_slot = 3;
-            this.transform.position = MoveSlot(cur_slot);
-        }
-        else if(Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            cur_slot = 4;
-            this.transform.position = MoveSlot(cur_slot);
-        }
+        
 
 		hand.LoadHoldObject();
 	}

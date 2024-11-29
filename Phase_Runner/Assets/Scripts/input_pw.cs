@@ -8,6 +8,7 @@ using Assets.Scripts;
 
 public class input_pw : MonoBehaviour
 {
+    private AudioSource inputSound;
     public TMP_InputField password_text_input;
     public UnityEngine.UI.Button input_button;
     public UnityEngine.UI.Button exitButton;
@@ -16,6 +17,8 @@ public class input_pw : MonoBehaviour
 
     private void Awake()
     {
+        password_text_input.onValueChanged.AddListener(OnTextChanged);
+        inputSound = GetComponent<AudioSource>();
         password_text = password_text_input.GetComponent<TMP_InputField>().text;
     }
 
@@ -32,6 +35,7 @@ public class input_pw : MonoBehaviour
     private void OnDisable()
     {
         isPWobjON = false;
+        password_text_input.text = "";
         if(exitButton != null)
         {
             exitButton.OnPointerExit(null);
@@ -50,5 +54,10 @@ public class input_pw : MonoBehaviour
             Debug.Log("정답");
         else
             Debug.Log("오답");
+    }
+
+    void OnTextChanged(string text)
+    {
+        inputSound.Play();
     }
 }
