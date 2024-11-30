@@ -39,10 +39,13 @@ namespace Assets.Scripts
 
 		void Update()
 		{
-			MovePlayer();    // 플레이어 이동 처리
-			HandleJump(); // 점프 및 중력 처리
-			if(input_pw.isPWobjON == false)
-				RotateCamera();  // 카메라 회전 처리
+			if (ScreenFadeImage.isGameOver == false)
+			{
+				MovePlayer();    // 플레이어 이동 처리
+				HandleJump(); // 점프 및 중력 처리
+				if (input_pw.isPWobjON == false)
+					RotateCamera();  // 카메라 회전 처리
+			}
 		}
 
 		void MovePlayer()

@@ -25,7 +25,7 @@ namespace Assets.Scripts
 				{
 					int x = Random.Range(-Boundary, Boundary);
 					int z = Random.Range(-Boundary, Boundary);
-					position = new Vector3(x, 4, z);
+					position = new Vector3(x, 2, z);
 					if (Physics.CheckSphere(position, checkRadius, collisionLayer))
 					{
 						continue;
@@ -34,6 +34,8 @@ namespace Assets.Scripts
 					{
 						GameObject box = Instantiate(Boxs[Box_idx], position, Quaternion.identity);
 						Rigidbody rb = box.AddComponent<Rigidbody>();
+						rb.constraints = RigidbodyConstraints.FreezePositionZ;
+						rb.constraints = RigidbodyConstraints.FreezePositionX;
 						rb.AddForce(new Vector3(x, 0, z), ForceMode.Impulse);
 						box.transform.parent = this.transform;
 						break;

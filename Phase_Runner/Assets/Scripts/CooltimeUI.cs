@@ -33,6 +33,8 @@ public class CooltimeUI : MonoBehaviour
 		cooltime = FindHint.Instance.GetCompassCol();
 		while (cooltime > 0.0f)
         {
+            if(cooltime < 27f && cooltime > 26f)
+                FindHint.Instance.SetCoolTime(false);
             cooltime -= Time.deltaTime;
 
             incooltime.fillAmount = cooltime / max_cooltime;
@@ -40,6 +42,5 @@ public class CooltimeUI : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
         isCoroutineRunning=false;
-		FindHint.Instance.SetCoolTime(isCoroutineRunning);
 	}
 }

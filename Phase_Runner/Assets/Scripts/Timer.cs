@@ -16,8 +16,9 @@ namespace Assets.Scripts
         public static Timer Instance { get { return instance; } }
         public TMP_Text timerText;
         public TMP_Text Date;
-        private int cur_day = 0;
-        private float timeRemaining = 180f;
+        public int cur_day = 0;
+        public GameObject GameOver;
+        private float timeRemaining;
         private bool timerRunning = true;
 
         private void Awake()
@@ -39,9 +40,13 @@ namespace Assets.Scripts
 
         void Update()
         {
+            if (cur_day == 7)
+            {
+                GameOver.transform.GetChild(1).gameObject.SetActive(true);
+            }
             if (timerRunning)
             {
-                if (timeRemaining > 0)
+                if (timeRemaining > 0 && cur_day < 7)
                 {
                     timeRemaining -= Time.deltaTime;
                     UpdateTimerDisplay(timeRemaining);

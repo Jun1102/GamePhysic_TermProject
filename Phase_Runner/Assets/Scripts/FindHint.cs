@@ -16,7 +16,7 @@ namespace Assets.Scripts
 		public float activeDuration = 3f;
 		public float cooldownTime = 5f;
 		public float currentCooldown = 0;
-		private bool isCoroutineRunning = false;
+		
 
 		private void Awake()
 		{
@@ -47,8 +47,7 @@ namespace Assets.Scripts
 
 		public void SetCoolTime(bool isRunning)
 		{
-			isCoroutineRunning = isRunning;
-			hintDirection.SetActive(isCoroutineRunning);
+			hintDirection.SetActive(isRunning);
 		}
 
 		public GameObject FindClosestHint()

@@ -7,8 +7,14 @@ public class hint_object : MonoBehaviour
 {
 
 	public hint_data hint;
+	public GameObject maze;
 
-	void Update()
+    private void Start()
+    {
+		maze = GameObject.Find("Plane");
+    }
+
+    void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.E))
 		{
@@ -21,6 +27,8 @@ public class hint_object : MonoBehaviour
 		inventory.instance.AddItem(hint);
 		Change_Hint.Instance.FindedHint();
 		Change_Maze.Instance.ChangeMaze();
+        maze.GetComponent<Change_Maze>().StopCoroutine(Change_Maze.Instance.Change);
+		Change_Maze.Instance.Change = maze.GetComponent<Change_Maze>().StartCoroutine(Change_Maze.Instance.CheckTimeChangeMaze());
 		Destroy(transform.parent.gameObject);
 	}
 }

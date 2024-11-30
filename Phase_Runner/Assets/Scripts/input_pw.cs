@@ -8,7 +8,9 @@ using Assets.Scripts;
 
 public class input_pw : MonoBehaviour
 {
+    public GameObject endGame;
     private AudioSource inputSound;
+    public AudioSource Locked;
     public TMP_InputField password_text_input;
     public UnityEngine.UI.Button input_button;
     public UnityEngine.UI.Button exitButton;
@@ -50,10 +52,15 @@ public class input_pw : MonoBehaviour
     public void InputPassword()
     {
         password_text = password_text_input.text;
-        if (password_text == "1234")
-            Debug.Log("정답");
+        if (password_text == "8114")
+        {
+            endGame.transform.GetChild(0).gameObject.SetActive(true);
+        }
         else
-            Debug.Log("오답");
+        {
+            Locked.Play();
+        }
+            
     }
 
     void OnTextChanged(string text)

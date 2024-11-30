@@ -12,7 +12,7 @@ namespace Assets.Scripts
 		public List<GameObject> Mazes;
 		public GameObject Maze = null;
 		public float ChangeTime = 10f;
-		public int MaxChangeCnt = 5;
+		public int MaxChangeCnt = 6;
 		public int change_cnt = -1;
 		public GameObject Player;
 		public GameObject Spawn;
@@ -44,9 +44,10 @@ namespace Assets.Scripts
 		{
 			while (change_cnt < MaxChangeCnt)
 			{
-				change_cnt++;
+                change_cnt++;
 				ChangeMaze();
-				yield return new WaitForSeconds(ChangeTime);
+                Timer.Instance.SetTime();
+                yield return new WaitForSeconds(ChangeTime);
 			}
 		}
 
@@ -72,9 +73,7 @@ namespace Assets.Scripts
 				Player.transform.position = Spawn.transform.position;
 				Controller.enabled = true;  // 다시 활성화
 			}
-			Timer.Instance.SetTime();
-			StopCoroutine(Change);
-			Change = StartCoroutine(CheckTimeChangeMaze());
-		}
+			
+        }
 	}
 }
